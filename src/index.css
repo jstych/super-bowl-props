@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* Team Colors */
+:root {
+  /* Seattle Seahawks */
+  --seahawks-navy: #002244;
+  --seahawks-green: #69BE28;
+  --seahawks-grey: #A5ACAF;
+
+  /* New England Patriots */
+  --patriots-navy: #002244;
+  --patriots-red: #C60C30;
+  --patriots-silver: #B0B7BC;
+
+  /* Shared */
+  --team-navy: #002244;
+  --gold: #C9B037;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #001122 0%, var(--team-navy) 50%, #0a1628 100%);
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Team accent stripe at top */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--seahawks-green) 0%,
+    var(--seahawks-green) 50%,
+    var(--patriots-red) 50%,
+    var(--patriots-red) 100%
+  );
+  z-index: 100;
+}
+
+/* Smooth transitions for score updates */
+.score-update {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Trophy shimmer effect for leader */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.leader-shimmer {
+  background: linear-gradient(90deg, #C9B037 0%, #FFE55C 50%, #C9B037 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Pulse animation for live indicator */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.live-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Team logo styles */
+.team-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+@media (min-width: 640px) {
+  .team-logo {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Seahawks green accent */
+.seahawks-accent {
+  color: var(--seahawks-green);
+}
+
+/* Patriots red accent */
+.patriots-accent {
+  color: var(--patriots-red);
+}
+
+/* Card backgrounds with subtle team colors */
+.card-seahawks {
+  background: linear-gradient(135deg, rgba(105, 190, 40, 0.1) 0%, transparent 100%);
+  border-left: 3px solid var(--seahawks-green);
+}
+
+.card-patriots {
+  background: linear-gradient(135deg, rgba(198, 12, 48, 0.1) 0%, transparent 100%);
+  border-left: 3px solid var(--patriots-red);
+}
