@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Leaderboard from './components/Leaderboard';
 import { fetchPicks, getMockPicks, GROUP_NAMES, SHEET_URLS } from './utils/fetchPicks';
+import hallOfFame from './data/hallOfFame.js';
 import { fetchAnswers } from './utils/fetchAnswers';
 import { calculateScores, getProgress } from './utils/calculateScores';
 import correctAnswersData from './data/correctAnswers.json';
@@ -148,6 +149,19 @@ function App() {
             ))}
           </div>
         </div>
+
+        {/* Hall of Fame link (only if this group has history) */}
+        {hallOfFame[group] && hallOfFame[group].length > 0 && (
+          <div className="flex justify-center mb-6">
+            <Link
+              to={`/${group}/hall-of-fame`}
+              className="inline-flex items-center gap-2 text-slate-400 hover:text-amber-400 transition-colors text-sm"
+            >
+              <span>🏆</span>
+              Hall of Fame
+            </Link>
+          </div>
+        )}
 
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20">
