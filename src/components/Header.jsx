@@ -1,5 +1,4 @@
-export default function Header({ isLive }) {
-  // Official team logos from Wikipedia Commons (SVG for crisp display)
+export default function Header() {
   const seahawksLogo = "https://upload.wikimedia.org/wikipedia/en/8/8e/Seattle_Seahawks_logo.svg";
   const patriotsLogo = "https://upload.wikimedia.org/wikipedia/en/b/b9/New_England_Patriots_logo.svg";
 
@@ -19,19 +18,10 @@ export default function Header({ isLive }) {
           </span>
         </div>
 
-        {/* VS / Super Bowl info */}
+        {/* VS / date */}
         <div className="flex flex-col items-center">
           <span className="text-2xl sm:text-3xl font-bold text-white/30">VS</span>
-          <div className="text-xs text-slate-500 mt-1">
-            {isLive ? (
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 bg-red-500 rounded-full live-pulse"></span>
-                <span className="text-red-400 font-bold">LIVE</span>
-              </span>
-            ) : (
-              <span>FEB 8, 2026</span>
-            )}
-          </div>
+          <span className="text-xs text-slate-500 mt-1">FEB 8, 2026</span>
         </div>
 
         {/* Patriots */}
@@ -55,6 +45,10 @@ export default function Header({ isLive }) {
       <h2 className="text-lg sm:text-xl text-slate-400 font-medium">
         Prop Bets Leaderboard
       </h2>
+
+      <p className="text-sm text-slate-500 mt-2 max-w-md mx-auto">
+        Our annual tradition of bold predictions and friendly bragging rights.
+      </p>
     </header>
   );
 }

@@ -104,7 +104,7 @@ function sortByScoreAndTiebreaker(participants, actualTotal) {
  * Get progress stats (how many questions answered)
  */
 export function getProgress(correctAnswers) {
-  const total = questions.length;
+  const total = questions.length + 1;
   const answered = Object.values(correctAnswers).filter(v => v !== null).length;
   return {
     answered,
